@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+    .chat-msg span {
+  font-weight: bold;
+  font-family: 'Segoe UI', sans-serif;
+}
+.market-mood {
+  text-align: center;
+  padding: 30px;
+  margin: 10px auto;
+  font-size: 20px;
+  animation: pop-in 5s infinite;
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+#market-emoji {
+  font-size: 30px;
+  display: rgba(43, 61, 153, 0.735);
+  margin-bottom: 20px;
+}
+
+
+.tertiary-nav {
+  background: var(--nav-bg);
+  padding: 20px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.live-market-toggle {
+  color: #03ce6c;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 17px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.live-market-toggle:hover {
+  color: #ffd700;
+}
+
+.glow-quote {
+  color: #e30618;
+  text-align: center;
+  font-size: 15px;
+  font-style: bold;
+  margin-top: 0px;
+  text-shadow: 0 0 20px rgb(5, 1, 0), 0 0 20px rgb(0, 0, 0), 0 0 30px rgb(0, 38, 255);
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+.stock-ticker {
+  background: #111;
+  color: #0f0;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 2px solid #444;
+  font-family: monospace;
+}
+
+.chat-msg.user span {
+  color: #007bff; /* Blue for user */
+}
+
+.chat-msg.bot span {
+  color: #c70fce; /* Green for bot */
+}
+
+body.dark-mode .chat-msg.user span {
+  color: #6666ff;
+}
+
+body.dark-mode .chat-msg.bot span {
+  color: #ee04ee;
+}
+
+    .chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  background: var(--section-bg);
+  border: 2px solid var(--header-bg);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.chat-header {
+  background: var(--header-bg);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+.chat-body {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  background: var(--section-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-msg {
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 85%;
+}
+
+.chat-msg.user {
+  background-color: #d9edf7;
+  align-self: flex-end;
+}
+
+.chat-msg.bot {
+  background-color: #e2e3e5;
+  align-self: flex-start;
+}
+
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input-area input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.chat-input-area button {
+  border: none;
+  background: var(--btn-bg);
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+    :root {
+      --bg-color: #f0f4f8;
+      --bg-gradient: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      --text-color: #000;
+      --section-bg: #ffffff;
+      --header-bg: #0e3c68;
+      --nav-bg: #17598b;
+      --tagline-color: #000;
+      --table-head: #e8eff7;
+      --invest-row: #d4edda;
+      --avoid-row: #f8d7da;
+      --btn-bg: #0e3c68;
+      --delete-bg: #c0392b;
+    }
+
+    body.dark-mode {
+      --bg-color: #1e1e1e;
+      --bg-gradient: linear-gradient(to right, #1e1e1e, #2e2e2e);
+      --text-color: #f0f0f0;
+      --section-bg: #2a2a2a;
+      --header-bg: #0e3c68;
+      --nav-bg: #123d5a;
+      --tagline-color: #ffffff;
+      --table-head: #3c3c3c;
+      --invest-row: #2f5034;
+      --avoid-row: #512a2a;
+      --btn-bg: #264d73;
+      --delete-bg: #b33a3a;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      background-attachment: fixed;
+    }
+
+    header {
+      background: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 0;
+      position: relative;
+    }
+
+    .header-wrapper {
+      background-color: #132f4c;
+      padding: 20px;
+    }
+
+    header img.logo {
+      width: 180px;
+      display: circle;
+      margin: 0 auto 20px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin: 5px 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      background: linear-gradient(90deg, red, orange, rgb(27, 128, 205), rgb(136, 19, 118), violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-weight: bold;
+      font-size: 22px;
+      margin-top: 8px;
+      color: var(--tagline-color);
+      background: linear-gradient(90deg, #ce10db, #7c3a14, #da07da);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background-color: #ffffff22;
+      border: none;
+      padding: 8px 16px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    nav, .secondary-nav {
+      background: var(--nav-bg);
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a, .secondary-nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .secondary-nav a:hover {
+      color: #ffd700;
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+      background-color: var(--section-bg);
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h2, h3 {
+      color: var(--text-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: var(--table-head);
+    }
+
+    .mutual-tabs, .stock-tabs {
+      margin-bottom: 10px;
+    }
+
+    .mutual-tabs button, .stock-tabs button {
+      padding: 8px 16px;
+      margin-right: 8px;
+      background: var(--btn-bg);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .mutual-table, .stock-table {
+      display: none;
+    }
+
+    .mutual-table.active, .stock-table.active {
+      display: table;
+    }
+
+    .invest-row {
+      background-color: var(--invest-row);
+    }
+
+    .avoid-row {
+      background-color: var(--avoid-row);
+    }
+
+    .contact-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      gap: 10px;
+    }
+
+    .contact-button img {
+      width: 24px;
+      height: 24px;
+    }
+
+    #portfolio input {
+      margin: 5px;
+      padding: 5px;
+    }
+
+    #portfolio button {
+      padding: 5px 10px;
+      background: var(--btn-bg);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      background: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .delete-btn {
+      background: var(--delete-bg);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    #latest-news ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #latest-news li {
+      background: var(--section-bg);
+      border-left: 5px solid var(--header-bg);
+      padding: 10px;
+      margin-bottom: 8px;
+      box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+    }
+    #loginForm {
+  background-image: url('images/investment-chart.jpg'); /* <-- update path if needed */
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 10px;
+  color: #ff2828;
+  padding: 20px;
+  margin-top: 20px;
+}
+body.dark-mode #loginForm {
+  color: #fff;
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIDDA TRADING AND INVESTING</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-wrapper">
+      <img src="images/logo.png" alt="Company Logo" class="logo" />
+      <h1>SIDDA TRADING AND INVESTING</h1>
+      <div class="tagline" style="color: #8917d5;">GROW YOUR MONEY WITH US</div>
+      <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+    </div>
+  </header>
+  <div class="stock-ticker">
+    <marquee behavior="scroll" direction="left" scrollamount="8">
+      📊 m
+    </marquee>
+  </div>
+
+  <nav>
+    <a onclick="showSection('stocks')">Stocks</a>
+    <a onclick="showSection('etf')">ETF</a>
+    <a onclick="showSection('mutual')">Mutual Funds</a>
+    <a onclick="showSection('ipos')">IPOs</a>
+    <a onclick="showSection('fd')">Fixed Deposits</a>
+  </nav>
+
+  <div class="secondary-nav">
+    <a onclick="showSection('portfolio')">Show Your Portfolio</a>
+    <a onclick="showSection('latest-news')">Latest News</a>
+    <a onclick="showSection('calculator')">Smart Calculator</a>
+  </div>
+  <div class="tertiary-nav">
+    <div class="live-market-toggle" onclick="toggleLiveMarket()">
+      📊 LIVE MARKET
+    </div>
+  </div>
+  <section id="stocks">
+    <h2>Stocks Recommendation</h2>
+    <div class="stock-tabs">
+      <button onclick="showStockTable('longTerm')">Long Term</button>
+      <button onclick="showStockTable('midTerm')">Mid Term</button>
+      <button onclick="showStockTable('shortTerm')">Short Term</button>
+    </div>
+    <table id="longTerm" class="stock-table">
+      <tr><th>Stock Name</th><th>Buying Price</th><th>Selling Price</th><th>Time Duration</th></tr>
+      <tr><td>Reliance</td><td>2300</td><td>2800</td><td>2 Years</td></tr>
+    </table>
+    <table id="midTerm" class="stock-table">
+      <tr><th>Stock Name</th><th>Buying Price</th><th>Selling Price</th><th>Time Duration</th></tr>
+      <tr><td>TCS</td><td>3100</td><td>3600</td><td>1 Year</td></tr>
+    </table>
+    <table id="shortTerm" class="stock-table">
+      <tr><th>Stock Name</th><th>Buying Price</th><th>Selling Price</th><th>Time Duration</th></tr>
+      <tr><td>Infosys</td><td>1400</td><td>1600</td><td>6 Months</td></tr>
+    </table>
+  </section>
+
+  <section id="etf">
+    <h2>ETF Recommendations</h2>
+    <table>
+      <tr><th>ETF Name</th><th>Buying Price</th><th>Target Price</th></tr>
+      <tr><td>Nippon India ETF</td><td>200</td><td>250</td></tr>
+      <tr><td>SBI ETF Nifty 50</td><td>210</td><td>260</td></tr>
+    </table>
+  </section>
+
+  <section id="mutual">
+    <h2>Mutual Fund Recommendations</h2>
+    <div class="mutual-tabs">
+      <button onclick="showMutualTable('largeCap')">Large Cap</button>
+      <button onclick="showMutualTable('midCap')">Mid Cap</button>
+      <button onclick="showMutualTable('smallCap')">Small Cap</button>
+    </div>
+    <table id="largeCap" class="mutual-table">
+      <tr><th>Fund Name</th><th>1Y Return</th><th>3Y Return</th><th>5Y Return</th><th>Star</th></tr>
+      <tr><td>Axis Bluechip</td><td>12%</td><td>38%</td><td>80%</td><td>4</td></tr>
+    </table>
+    <table id="midCap" class="mutual-table">
+      <tr><th>Fund Name</th><th>1Y Return</th><th>3Y Return</th><th>5Y Return</th><th>Star</th></tr>
+      <tr><td>Kotak Emerging Equity</td><td>15%</td><td>40%</td><td>85%</td><td>4</td></tr>
+    </table>
+    <table id="smallCap" class="mutual-table">
+      <tr><th>Fund Name</th><th>1Y Return</th><th>3Y Return</th><th>5Y Return</th><th>Star</th></tr>
+      <tr><td>Nippon Small Cap</td><td>18%</td><td>45%</td><td>90%</td><td>5</td></tr>
+    </table>
+  </section>
+
+  <section id="ipos">
+    <h2>IPO Recommendations</h2>
+    <table>
+      <tr><th>IPO Name</th><th>IPO GMP</th><th>Recommendation</th><th>Min Profit</th><th>Max Profit</th><th>Opening Date</th><th>Closing Date</th></tr>
+      <tr class="invest-row"><td>ABC Ltd</td><td>₹50</td><td>Invest</td><td>₹2,000</td><td>₹4,000</td><td>2025-04-15</td><td>2025-04-18</td></tr>
+      <tr class="avoid-row"><td>XYZ Tech</td><td>₹10</td><td>Avoid</td><td>₹0</td><td>₹500</td><td>2025-04-20</td><td>2025-04-22</td></tr>
+    </table>
+  </section>
+
+  <section id="fd">
+    <h2>Fixed Deposit Recommendations</h2>
+    <table>
+      <tr><th>Bank</th><th>FD Rate</th><th>Duration</th></tr>
+      <tr><td>SBI</td><td>6.5%</td><td>5 Years</td></tr>
+      <tr><td>HDFC</td><td>7%</td><td>3 Years</td></tr>
+    </table>
+  </section>
+
+  <section id="portfolio">
+    <h2>Your Portfolio</h2>
+  
+    <div id="loginForm">
+      <p>Login with your email and password to access your portfolio:</p>
+      <input type="email" id="userEmail" placeholder="Enter your email" required />
+      
+      <div style="position: relative;">
+        <input type="password" id="userPassword" placeholder="Enter your password" required />
+        <button type="button" onclick="togglePassword()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 12px;">Show</button>
+      </div>
+    
+      <label style="display: block; margin-top: 5px;">
+        <input type="checkbox" id="rememberMe" /> Remember Me
+      </label>
+    
+      <button id="loginBtn" onclick="loginUser()">Login</button>
+    </div>
+    
+    
+
+    <div id="portfolioContent" style="display:none;">
+      <p id="welcomeMsg"></p>
+
+      <h3>Add Your Investment</h3>
+      <input type="text" id="stockName" placeholder="Stock Name" />
+      <input type="number" id="buyPrice" placeholder="Buy Price" />
+      <input type="number" id="qty" placeholder="Quantity" />
+      <button onclick="addStock()">Add</button>
+
+      <h3>Your Stocks</h3>
+      <table id="userStockTable">
+        <tr><th>Stock Name</th><th>Buy Price</th><th>Quantity</th><th>Status</th><th>Action</th></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="latest-news">
+    <h2>Latest Stock News (By Admin)</h2>
+    <ul>
+      <li><strong>10-Apr:</strong> Infosys declared Q4 results beating market expectations.</li>
+      <li><strong>08-Apr:</strong> RBI announced new policy affecting interest rates.</li>
+      <li><strong>05-Apr:</strong> Reliance to invest in AI technology partnerships.</li>
+    </ul>
+  </section>
+
+  <section id="calculator" class="content-section">
+    <h2>Smart Calculator</h2>
+    <div class="calculator-menu">
+      <button onclick="showCalculator('emi-calculator')">EMI Calculator</button>
+      <button onclick="showCalculator('sip-calculator')">SIP Calculator</button>
+      <button onclick="showCalculator('lumpsum-calculator')">Lumpsum Calculator</button>
+      <button onclick="showCalculator('fd-calculator')">FD Calculator</button>
+    </div>
+  
+    <div id="emi-calculator" class="calculator-section" style="display:none;">
+      <h3>EMI Calculator</h3>
+      <label>Loan Amount: <input type="number" id="loanAmount" /></label><br>
+      <label>Interest Rate (%): <input type="number" id="interestRate" /></label><br>
+      <label>Tenure (Years): <input type="number" id="tenure" /></label><br>
+      <button onclick="calculateEMI()">Calculate EMI</button>
+      <p id="emiResult"></p>
+    </div>
+  
+    <div id="sip-calculator" class="calculator-section" style="display:none;">
+      <h3>SIP Calculator</h3>
+      <label>Monthly Investment: <input type="number" id="sipAmount" /></label><br>
+      <label>Expected Annual Return (%): <input type="number" id="sipReturn" /></label><br>
+      <label>Investment Period (Years): <input type="number" id="sipYears" /></label><br>
+      <button onclick="calculateSIP()">Calculate SIP</button>
+      <p id="sipResult"></p>
+    </div>
+  
+    <div id="lumpsum-calculator" class="calculator-section" style="display:none;">
+      <h3>Lumpsum Calculator</h3>
+      <label>Investment Amount: <input type="number" id="lumpsumAmount" /></label><br>
+      <label>Expected Annual Return (%): <input type="number" id="lumpsumReturn" /></label><br>
+      <label>Investment Period (Years): <input type="number" id="lumpsumYears" /></label><br>
+      <button onclick="calculateLumpsum()">Calculate Lumpsum</button>
+      <p id="lumpsumResult"></p>
+    </div>
+  
+    <div id="fd-calculator" class="calculator-section" style="display:none;">
+      <h3>FD Calculator</h3>
+      <label>Principal Amount: <input type="number" id="fdPrincipal" /></label><br>
+      <label>Interest Rate (%): <input type="number" id="fdRate" /></label><br>
+      <label>Tenure (Years): <input type="number" id="fdTenure" /></label><br>
+      <button onclick="calculateFD()">Calculate FD</button>
+      <p id="fdResult"></p>
+    </div>   
+    
+  </section>
+  <div class="market-mood">
+    <span id="market-emoji">📈</span>
+    <p id="mood-text">The market looks bullish today! Stay sharp. 🔥</p>
+  </div>
+  
+  <section id="live-market" style="display: none;">
+  <h2 id="market-date"></h2>
+  <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <!-- Top Gainers -->
+    <div style="flex: 1;">
+      <h3>Top Gainers</h3>
+      <table>
+        <thead>
+          <tr><th>Stock</th><th>Price</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Stock A</td><td>₹1520</td><td style="color: green;">+5.2%</td></tr>
+          <tr><td>Stock B</td><td>₹880</td><td style="color: green;">+4.8%</td></tr>
+          <tr><td>Stock C</td><td>₹1130</td><td style="color: green;">+3.6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Top Losers -->
+    <div style="flex: 1;">
+      <h3>Top Losers</h3>
+      <table>
+        <thead>
+          <tr><th>Stock</th><th>Price</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Stock X</td><td>₹670</td><td style="color: red;">-6.1%</td></tr>
+          <tr><td>Stock Y</td><td>₹1230</td><td style="color: red;">-5.3%</td></tr>
+          <tr><td>Stock Z</td><td>₹450</td><td style="color: red;">-4.7%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+  
+  <a href="https://wa.me/916289685362" target="_blank" class="contact-button">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    <span>Contact Me</span>
+  </a>
+  <div class="chatbot-container">
+    <div class="chat-header" onclick="toggleChat()">KNOW ABOUT MARKET</div>
+    <div class="chat-body" id="chatBody" style="display: flex;"></div>
+    <div class="chat-input-area" style="display: flex;">
+      <input type="text" id="userInput" placeholder="Ask something..." onkeypress="if(event.key==='Enter') sendMessage()" />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  
+  <footer>
+    &copy; SIDDA TRADING AND INVESTING
+  </footer>
+  <div class="glow-quote"></div>
+  
+</body>
+</html>
